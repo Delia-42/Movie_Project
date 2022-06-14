@@ -9,3 +9,4 @@ db = mysql.connector.connect(
 mycursor = db.cursor()
 
 #mycursor.execute("CREATE TABLE life (id int, name varchar(20), age int)")
+mycursor.execute("")
