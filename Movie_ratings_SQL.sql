@@ -221,6 +221,14 @@ insert into ratings values
 
 select*from ratings
 
+SELECT title, AVG(rating) as average_rating
+FROM ratings
+INNER JOIN movies
+ON movies.id = ratings.movie_id
+GROUP BY movie_id
+ORDER BY average_rating DESC
+LIMIT 5
+
 
 
 
