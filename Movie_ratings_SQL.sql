@@ -229,6 +229,9 @@ GROUP BY movie_id
 ORDER BY average_rating DESC
 LIMIT 5
 
+select title, genre from movies where genre = "horror";
+
+
 
 
 

@@ -12,6 +12,29 @@ def Q_Drama():
     for x in mycursor:
         print(x)
 
+def Q_Horror():
+    mycursor.execute('select title, genre from movies where genre = "horror";')
+    for x in mycursor:
+        print(x)
+
+def Q_Comedy():
+    mycursor.execute('select title, genre from movies where genre = "comedy";')
+    for x in mycursor:
+        print(x)
+
+def Q_Adventure():
+    mycursor.execute('select title, genre from movies where genre = "adventure";')
+    for x in mycursor:
+        print(x)
+
+def Q_Action():
+    mycursor.execute('select title, genre from movies where genre = "action";')
+    for x in mycursor:
+        print(x)
+
+
+
+
 
 
 def startup():                                  # the startup function is called below so that it can run
@@ -32,20 +55,20 @@ def startup():                                  # the startup function is called
                 print("Please Enter a digit from 1-6:")
             else:
                 break
-        if sel == 1:                            # if-else statement checks for each possible selection
-            Q_Drama()                    # runs the insert_emp() function defined above
-        """elif sel == 2:
-            Q_horror()
+        if sel == 1:                            
+            Q_Drama()                    
+        elif sel == 2:
+            Q_Horror()
         elif sel == 3:
-            Q_comedy()
+            Q_Comedy()
         elif sel == 4:
-            Q_adventure()
+            Q_Adventure()
         elif sel == 5:
-            Q_action()
+            Q_Action()
         elif sel == 6:
-            print("Thank you! Have a good day!")
+            print("I hope you've enjoyed your exploration! Have a good day!")
             break                               # immediately break the loop
         else:
-            print("Please make a valid input.")"""
+            print("Please make a valid input.")
 
 startup() # This will run when the program starts
