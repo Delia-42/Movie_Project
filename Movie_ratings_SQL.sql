@@ -1,131 +1,137 @@
-create database Movie_Ratings_Project; #This where the database was created.
-use Movie_Ratings_Project; #This indicates that I will be using the Movie_Ratings_Project
+create database Movie_Ratings_Project; #This is how the database was created.
+use Movie_Ratings_Project; #This indicates that I will be using the Movie_Ratings_Project database.
 
-create table movies  #The table and its name was created.  The schema for this table is below:
-(id int primary key, title varchar(50), release_year int, genre varchar(20));
+create table movies  #This is where the first table and its name were created.  The schema for this table is below:
+(id int primary key AUTO_INCREMENT, title varchar(50), release_year int, genre varchar(20)); #The auto increment was used to generate unique ids for the primary key whenever a record is created.
 
-insert into movies values #Created values for the movies table.
-(1,"The Shawshank Redemption",1994,"Drama"),
-(2,"Schindler's List", 1993,"Drama"),
-(3,"Pulp Fiction",1994,"Drama"),
-(4,"Fight Club",1999,"Drama"),
-(5,"The Matrix", 1999,"Action"),
-(6,"Se7en",1995,"Drama"),
-(7,"The Silence of the Lambs",1991,"Drama"),
-(8,"Back to the Future",1985,"Sci-Fi"),
-(9,"Psycho",1960,"Horror"),
-(10,"Leon: The Professional",1994,"Action"),
-(11,"The Lion King",1994,"Drama"),
-(12,"Gladiator",2000,"Action"),
-(13,"Rear Window",1954,"Mystery"),
-(14,"Alien",1979,"Sci-Fi"),
-(15,"Indiana Jones and the Raiders of the Lost Ark",1981,"Action"),
-(16,"The Shining",1980,"Horror"),
-(17,"Aliens",1986,"Sci-Fi"),
-(18,"Braveheart",1995,"Drama"),
-(19,"Inglourious Basterds",2009,"Drama"),
-(20,"Vertigo",1958,"Mystery"),
-(21,"Indiana Jones and the Last Crusade",1989,"Action"),
-(22,"The Wolf of Wall Street",2013,"Comedy"),
-(23,"Pan's Labyrinth",2006,"Drama"),
-(24,"The Sixth Sense",1999,"Mystery"),
-(25,"A Beautiful Mind",2001,"Drama"),
-(26,"The Great Escape",1963,"Adventure"),
-(27,"Jurassic Park",1993,"Adventure"),
-(28,"Kill Bill Vol.1",2003,"Action"),
-(29,"Finding Nemo",2003,"Adventure"),
-(30,"V for Vendetta",2005,"Drama"),
-(31,"The Thing",1982,"Sci-Fi"),
-(32,"Dial M for Murder",1954,"Mystery"),
-(33,"Gone Girl",2014,"Drama"),
-(34,"Jaws",1975,"Horror"),
-(35,"Rocky",1976,"Drama"),
-(36,"The Terminator",1984,"Sci-Fi"),
-(37,"The Wizard of Oz",1939,"Adventure"),
-(38,"Groundhog Day",1993,"Comedy"),
-(39,"The Exorcist",1973,"Horror"),
-(40,"The Sound of Music",1965,"Drama"),
-(41,"Dances with Wolves",1990,"Adventure"),
-(42,"Predator",1987,"Sci-Fi"),
-(43,"The Ring",2002,"Horror"),
-(44,"The Blide Side",2009,"Drama"),
-(45,"Arachnophobia",1990,"Horror"),
-(46,"Scream",1996,"Horror"),
-(47,"Anacondas: The Hunt for the Blood Orchid",2004,"Horror"),
-(48,"Senior Year",2022,"Comedy"),
-(49,"The Goonies",1985,"Adventure"),
-(50,"Beetlejuice",1988,"Comedy");
+insert into movies (title,release_year,genre) values #This is where values were inputed into the movies table.
+("The Shawshank Redemption",1994,"Drama"),
+("Schindler's List", 1993,"Drama"),
+("Pulp Fiction",1994,"Drama"),
+("Fight Club",1999,"Drama"),
+("The Matrix", 1999,"Action"),
+("Se7en",1995,"Drama"),
+("The Silence of the Lambs",1991,"Drama"),
+("Back to the Future",1985,"Sci-Fi"),
+("Psycho",1960,"Horror"),
+("Leon: The Professional",1994,"Action"),
+("The Lion King",1994,"Drama"),
+("Gladiator",2000,"Action"),
+("Rear Window",1954,"Mystery"),
+("Alien",1979,"Sci-Fi"),
+("Indiana Jones and the Raiders of the Lost Ark",1981,"Action"),
+("The Shining",1980,"Horror"),
+("Aliens",1986,"Sci-Fi"),
+("Braveheart",1995,"Drama"),
+("Inglourious Basterds",2009,"Drama"),
+("Vertigo",1958,"Mystery"),
+("Indiana Jones and the Last Crusade",1989,"Action"),
+("The Wolf of Wall Street",2013,"Comedy"),
+("Pan's Labyrinth",2006,"Drama"),
+("The Sixth Sense",1999,"Mystery"),
+("A Beautiful Mind",2001,"Drama"),
+("The Great Escape",1963,"Adventure"),
+("Jurassic Park",1993,"Adventure"),
+("Kill Bill Vol.1",2003,"Action"),
+("Finding Nemo",2003,"Adventure"),
+("V for Vendetta",2005,"Drama"),
+("The Thing",1982,"Sci-Fi"),
+("Dial M for Murder",1954,"Mystery"),
+("Gone Girl",2014,"Drama"),
+("Jaws",1975,"Horror"),
+("Rocky",1976,"Drama"),
+("The Terminator",1984,"Sci-Fi"),
+("The Wizard of Oz",1939,"Adventure"),
+("Groundhog Day",1993,"Comedy"),
+("The Exorcist",1973,"Horror"),
+("The Sound of Music",1965,"Drama"),
+("Dances with Wolves",1990,"Adventure"),
+("Predator",1987,"Sci-Fi"),
+("The Ring",2002,"Horror"),
+("The Blide Side",2009,"Drama"),
+("Arachnophobia",1990,"Horror"),
+("Scream",1996,"Horror"),
+("Anacondas: The Hunt for the Blood Orchid",2004,"Horror"),
+("Senior Year",2022,"Comedy"),
+("The Goonies",1985,"Adventure"),
+("Beetlejuice",1988,"Comedy");
 
-select * from movies; #Selects the entire movie table
+# The next two select statements were used simply to briefly explore and test the movies table.
+
+select * from movies; # I used this select option in order to check and see if the values were actually inputed into the movies table.
 
 select title, release_year from movies
-order by release_year; #Sorts the release year in ascending order of each movie.
+order by release_year; #I used this option to check out the oldest movie in the collection.
 
-create table reviewers #Created the table for Reviewers. The schema for this table is below:
-(id int primary key, first_name varchar(30), last_name varchar(40)); 
+create table reviewers #This is where I created the 2nd table for the movies_ratings_project database.  This is the reviewers table.  The schema for this table is below, and as you can see I also used the auto increment option:
+(id int primary key AUTO_INCREMENT, first_name varchar(30), last_name varchar(40)); 
 
-insert into reviewers values
-(1,"Laura","Lane"),
-(2,"Care","Bear"),
-(3,"Jonah","Beach"),
-(4,"Grass", "Orchid"),
-(5,"Mother","Goose"),
-(6,"Woody","Blanket"),
-(7,"Peachy","Curtain"),
-(8,"Monica","Curts"),
-(9,"Laney","Road"),
-(10,"Ronnie","Backyard"),
-(11,"Shark","Tanky"),
-(12,"Branky","Stewart"),
-(13, "Snow","White"),
-(14,"Mickey","Mouse"),
-(15,"Michael","Myers"),
-(16,"Annabella","Sky"),
-(17,"Pinocchio","Nose"),
-(18,"Sneezy","Gnome"),
-(19,"Benny","Were"),
-(20,"LaLa","Paloosa"),
-(21,"Papier","Blanc"),
-(22,"Vento","Morgan"),
-(23,"Drake","Memento"),
-(24,"Slider","Mongi"),
-(25,"Deja","Fire"),
-(26,"Maddie","Monroe"),
-(27,"Kyle","South"),
-(28,"Kenny","North"),
-(29,"Cartman","West"),
-(30,"Tweak","East"),
-(31,"Toni","Self"),
-(32,"Maya","May"),
-(33,"Lynn","Ever"),
-(34,"William","Law"),
-(35,"Bellatrix","Lestrange"),
-(36,"Malfoy","Slytherin"),
-(37,"Selena","Green"),
-(38,"Serena","Waterford"),
-(39,"June","Bug"),
-(40,"Paul","Hollywood"),
-(41,"Mary","Berry"),
-(42,"Jingle","Bells"),
-(43,"Rascal","Pascal"),
-(44,"Diablo","Land"),
-(45,"Dobryana","Essie"),
-(46,"Peter","Rabbit"),
-(47,"Ceja","Beach"),
-(48,"Koala","Said"),
-(49,"Jay","Bean"),
-(50,"Frodo","Hobbit");
+insert into reviewers(first_name,last_name) values #This is where I inputed the values for the reviewers table.
+("Laura","Lane"),
+("Care","Bear"),
+("Jonah","Beach"),
+("Grass", "Orchid"),
+("Mother","Goose"),
+("Woody","Blanket"),
+("Peachy","Curtain"),
+("Monica","Curts"),
+("Laney","Road"),
+("Ronnie","Backyard"),
+("Shark","Tanky"),
+("Branky","Stewart"),
+("Snow","White"),
+("Mickey","Mouse"),
+("Michael","Myers"),
+("Annabella","Sky"),
+("Pinocchio","Nose"),
+("Sneezy","Gnome"),
+("Benny","Were"),
+("LaLa","Paloosa"),
+("Papier","Blanc"),
+("Vento","Morgan"),
+("Drake","Memento"),
+("Slider","Mongi"),
+("Deja","Fire"),
+("Maddie","Monroe"),
+("Kyle","South"),
+("Kenny","North"),
+("Cartman","West"),
+("Tweak","East"),
+("Toni","Self"),
+("Maya","May"),
+("Lynn","Ever"),
+("William","Law"),
+("Bellatrix","Lestrange"),
+("Malfoy","Slytherin"),
+("Selena","Green"),
+("Serena","Waterford"),
+("June","Bug"),
+("Paul","Hollywood"),
+("Mary","Berry"),
+("Jingle","Bells"),
+("Rascal","Pascal"),
+("Diablo","Land"),
+("Dobryana","Essie"),
+("Peter","Rabbit"),
+("Ceja","Beach"),
+("Koala","Said"),
+("Jay","Bean"),
+("Frodo","Hobbit");
+
+# Next as before, I checked to make sure that the values were actually inputed into the reviewers table.
 
 select * from reviewers;
-CREATE TABLE ratings (
-    movie_id int NOT NULL,
-    reviewer_id int NOT NULL,
+
+# I then created a third table for the ratings.  In this table you'll see the foreign keys (ids) that will refer to the primary keys in the 1st and 2nd tables.
+create table ratings (
+    movie_id int not null,
+    reviewer_id int not null,
 	rating int,
-    FOREIGN KEY (movie_id) REFERENCES movies(id),
-    FOREIGN KEY (reviewer_id) REFERENCES reviewers(id)
+    foreign key (movie_id) references movies(id),
+    foreign key (reviewer_id) references reviewers(id)
 );
 
-insert into ratings values
+insert into ratings values # Here I have manually inputed values for the id columns and then randomly input ratings for the movies.
 (1,1,8),
 (2,2,9),
 (3,3,8),
@@ -175,19 +181,11 @@ insert into ratings values
 (47,47,7),
 (48,48,6),
 (49,49,5),
-(50,50,4);
-
-select * from ratings
-
-insert into ratings values
+(50,50,4),
 (2,3,7),
 (4,6,7),
 (6,7,9),
-(3,5,9);
-
-select * from ratings
-
-insert into ratings values
+(3,5,9),
 (6,8,2),
 (2,5,8),
 (23,24,5),
@@ -219,17 +217,92 @@ insert into ratings values
 (7,42,7),
 (8,34,7);
 
-select*from ratings
+# I've once again created a select statement to make sure that the ratings values were input into the table.
 
-SELECT title, AVG(rating) as average_rating
+select * from ratings;
+
+# Next you'll see select statements that were tested to make sure that the select statements, that are in python, are in working condition.
+
+SELECT title, genre, MAX(rating)
 FROM ratings
 INNER JOIN movies
 ON movies.id = ratings.movie_id
-GROUP BY movie_id
-ORDER BY average_rating DESC
-LIMIT 5
+Where genre = "Horror" 
+Group By title
+ORDER BY rating DESC
+LIMIT 3;
 
-select title, genre from movies where genre = "horror";
+SELECT title, genre, MAX(rating)
+FROM ratings
+INNER JOIN movies
+ON movies.id = ratings.movie_id
+Where genre = "Drama" 
+Group By title
+ORDER BY rating DESC
+LIMIT 3;
+
+SELECT title, genre, MAX(rating)
+FROM ratings
+INNER JOIN movies
+ON movies.id = ratings.movie_id
+Where genre = "Comedy" 
+Group By title
+ORDER BY rating DESC
+LIMIT 3;
+
+SELECT title, genre, MAX(rating)
+FROM ratings
+INNER JOIN movies
+ON movies.id = ratings.movie_id
+Where genre = "Adventure" 
+Group By title
+ORDER BY rating DESC
+LIMIT 3;
+
+SELECT title, genre, MAX(rating)
+FROM ratings
+INNER JOIN movies
+ON movies.id = ratings.movie_id
+Where genre = "Action" 
+Group By title
+ORDER BY rating DESC
+LIMIT 3;
+
+
+# The following are miscellaneous checks on the database:
+
+# movies table select statements -
+
+select title, genre from movies where genre = "horror"; #This can be used to see if a movie has been inserted from python in a particular genre.
+
+select * from movies; # This is used to simply check on the movies inputs.
+
+delete from movies where id = 83; #This is used for deleting rows from the movies table.
+
+SELECT MAX(id) from movies; #This is used to check the highest movies id.
+
+
+# reviewers table select statements - 
+
+select * from reviewers; #This can be used again to see reviewer table inputs.
+
+select * from reviewers #This can be used to pick out users.
+where id = 13;
+
+
+# ratings table select statements - 
+
+select * from ratings; # This used to check on the ratings table inputs.
+
+select * from ratings #This can be used to see how often a movie has been rated
+where movie_id = 84;
+
+
+
+ 
+
+
+
 
 
 
