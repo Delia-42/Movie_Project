@@ -65,34 +65,18 @@ def AC_Ratings():
 
 
 # The following are functions for users with ids to rate movies.
+
 def New_Review():
     r_title = input ("Enter the movie name:")
     r_release_year = input("Enter the release year:")
     r_genre = input("Enter the genre:")
-    sql = "INSERT INTO movies (title, release_year, genre) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO movies (title, release_year, genre) VALUES (%s, %s, %s)"  
     val = (r_title, r_release_year, r_genre)
     mycursor.execute(sql, val)
     db.commit()
     print("record inserted.")
-
-  
-
-def get_movie_id():
-    mycursor.execute("SELECT MAX(id) from movies;")
-    for x in mycursor:
-        movie_id = int(x[0])
-        print(movie_id)
-    return movie_id
     
-    #for x in mycursor:
-    #     m = int(x[0])
-     #    print(m)
-    #return m
-    
-    
-    
-
-#m = 0
+ 
 
 # This is where the program prompts the user to input selections.
 def startup():                                  
@@ -143,12 +127,12 @@ def startup():
 
         elif sel == 7:  # The following also refers to defined functions from earlier in the program.
             New_Review()
-            get_movie_id()
+            movie_id = mycursor.lastrowid
+            movie_id = int(movie_id)
             r_reviewer_id = int(input("Please enter your user ID:"))
             r_rating = input("Enter rating:")    
             sql1 = "INSERT INTO ratings(movie_id, reviewer_id, rating) VALUES (%s, %s, %s)"
-            val2 = (movie_id, r_reviewer_id, r_rating)
-            movie_id = int(movie_id) # The error states that 'movie_id' is referenced before assignment.
+            val2 = (movie_id, r_reviewer_id, r_rating)       
             mycursor.execute(sql1, val2)
             db.commit()
         elif sel == 8:
