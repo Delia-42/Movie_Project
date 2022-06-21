@@ -277,7 +277,9 @@ select title, genre from movies where genre = "horror"; #This can be used to see
 
 select * from movies; # This is used to simply check on the movies inputs.
 
-delete from movies where id = 83; #This is used for deleting rows from the movies table.
+delete from movies where id = 74; #This is used for deleting rows from the movies table.
+
+select title, id from movies where title = "Schindler's List";
 
 SELECT MAX(id) from movies; #This is used to check the highest movies id.
 
@@ -292,10 +294,13 @@ where id = 13;
 
 # ratings table select statements - 
 
-select * from ratings; # This used to check on the ratings table inputs.
+select * from ratings; # This is used to check on the ratings table inputs.
 
 select * from ratings #This can be used to see how often a movie has been rated
-where movie_id = 84;
+where movie_id = 1;
+
+delete from ratings where movie_id =73; # This is for deleting ratings by the movie_id.
+
 
 
 

@@ -76,12 +76,14 @@ def New_Review():
     db.commit()
     print("record inserted.")
     
- 
+def Delete_Movie_ID():
+    mycursor.execute('delete from ratings order by movie_id desc limit 1;')
+    db.commit()
 
 # This is where the program prompts the user to input selections.
 def startup():                                  
     while True:                               
-        print("Ahoy, there! To see a list of movies available, please select a genre to explore. \n Please input a number between 1-5. \n If you would like to see the top rated movies of each genre please input 6. \n If you would like to rate a movie, please input 7. \n Or input 8 if you wish to leave.")  
+        print("Ahoy, there! To see a list of movies available, please select a genre to explore. \n Please input a number between 1-5. \n If you would like to see the top rated movies of each genre please input 6. \n If you would like to rate a movie, please input 7. \n If you would like to delete your recent rating, please input 8. \n Or input 9 if you wish to leave.")  
         print("\t1. Drama")
         print("\t2. Horror")
         print("\t3. Comedy")
@@ -89,7 +91,8 @@ def startup():
         print("\t5. Action")
         print("\t6. Top_Rated")
         print("\t7. Create_a_Review")
-        print("\t8. Quit")
+        print("\t8. Delete_Review")
+        print("\t9. Quit")
         
 
         while True:
@@ -136,6 +139,8 @@ def startup():
             mycursor.execute(sql1, val2)
             db.commit()
         elif sel == 8:
+            Delete_Movie_ID()
+        elif sel == 9:
             print("I hope you've enjoyed your exploration! Have a good day!") 
             break                               
         else:
