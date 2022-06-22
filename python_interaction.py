@@ -74,13 +74,14 @@ def New_Review():
     val = (r_title, r_release_year, r_genre)
     mycursor.execute(sql, val)
     db.commit()
-    print("record inserted.")
+    print("Movie added.")
     
 def Delete_Movie_ID():
     mycursor.execute('delete from ratings order by movie_id desc limit 1;')
     db.commit()
     mycursor.execute('delete from movies order by id desc limit 1;')
     db.commit()
+    print("Rating deleted")
     
 # This is where the program prompts the user to input selections.
 def startup():                                  
@@ -139,10 +140,11 @@ def startup():
             val2 = (movie_id, r_reviewer_id, r_rating)       
             mycursor.execute(sql1, val2)
             db.commit()
+            print("Rating added")
         elif sel == 8:
             Delete_Movie_ID()
         elif sel == 9:
-            print("\nI hope you've enjoyed your exploration! Have a good day!\n") 
+            print("\nI hope you've enjoyed your rating experience! Have a good day!\n") 
             break                               
         else:
             print("Sorry!  That input is not recognized")
