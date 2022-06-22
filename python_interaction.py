@@ -15,53 +15,53 @@ mycursor = db.cursor()    # Here I created the cursor object (mycursor).
 def Q_Drama():
     mycursor.execute('select title, genre from movies where genre = "drama";')
     for x in mycursor:
-        print(x)
+        print(x[0])
 
 def Q_Horror():
     mycursor.execute('select title, genre from movies where genre = "horror";')
     for x in mycursor:
-        print(x)
+        print(x[0])
 
 def Q_Comedy():
     mycursor.execute('select title, genre from movies where genre = "comedy";')
     for x in mycursor:
-        print(x)
+        print(x[0])
 
 def Q_Adventure():
     mycursor.execute('select title, genre from movies where genre = "adventure";')
     for x in mycursor:
-        print(x)
+        print(x[0])
 
 def Q_Action():
     mycursor.execute('select title, genre from movies where genre = "action";')
     for x in mycursor:
-        print(x)
+        print(x[0])
 
 # The following are functions for select statements that are in a loop within a loop.
 def H_Ratings():
     mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Horror" Group By title ORDER BY rating DESC LIMIT 3;')
     for x in mycursor:
-        print(x)
+        print(*x)
     
 def D_Ratings():
     mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Drama" Group By title ORDER BY rating DESC LIMIT 3;')
     for x in mycursor:
-        print(x)
+        print(*x)
 
 def C_Ratings():
     mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Comedy" Group By title ORDER BY rating DESC LIMIT 3;')
     for x in mycursor:
-        print(x)
+        print(*x)
 
 def AD_Ratings():
     mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Adventure" Group By title ORDER BY rating DESC LIMIT 3;')
     for x in mycursor:
-        print(x)
+        print(*x)
 
 def AC_Ratings():
     mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Action" Group By title ORDER BY rating DESC LIMIT 3;')
     for x in mycursor:
-        print(x)
+        print(*x)
 
 
 # The following are functions for users with ids to rate movies and to delete their ratings.
