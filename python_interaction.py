@@ -65,7 +65,6 @@ def AC_Ratings():
 
 
 # The following are functions for users with ids to rate movies and to delete their ratings.
-
 def New_Review():
     r_title = input ("Enter the movie name:")
     r_release_year = input("Enter the release year:")
@@ -95,7 +94,7 @@ def startup():
         print("\t6. Top_Rated")
         print("\t7. Create_a_Review")
         print("\t8. Delete_Review")
-        print("\t9. Quit")
+        print("\t9. Leave")
         
 
         while True:
@@ -117,7 +116,7 @@ def startup():
         elif sel == 5:
             Q_Action()
         elif sel == 6:
-            x = input("\n To check out the top 3 rated movies in Horror, input the value A. \n \n To check out the top 3 rated movies in Drama, input B.\n \n To check out the top 3 rated movies in Comedy, input C. \n \n To check out the top 3 rated movies in Adventure, input D. \n \n To check out the top 3 rated Action movies, input E \n \n")
+            x = input("\n To check out the top 3 rated movies in Horror, input the value A. \n \n To check out the top 3 rated movies in Drama, input B.\n \n To check out the top 3 rated movies in Comedy, input C. \n \n To check out the top 3 rated movies in Adventure, input D. \n \n To check out the top 3 rated movies in Action, input E \n \n")
             if x == "A":          #This is the loop within a loop that also refers to defined functions up top.                  
                 H_Ratings()
             if x == "B":
