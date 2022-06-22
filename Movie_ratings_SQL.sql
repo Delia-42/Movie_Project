@@ -277,7 +277,10 @@ select title, genre from movies where genre = "horror"; #This can be used to see
 
 select * from movies; # This is used to simply check on the movies inputs.
 
-delete from movies where id = 107; #This is used for deleting rows from the movies table.
+delete from movies where id = 108; #This is used for deleting rows from the movies table.
+
+delete from movies 
+order by id desc limit 1;
 
 select title, id from movies where title = "Schindler's List";
 
@@ -305,6 +308,15 @@ delete from ratings where movie_id = MAX(movie_id);
 
 delete from ratings
 order by movie_id desc limit 1;
+
+#Program Presentation:
+
+select * from movies;
+
+select * from ratings;
+
+
+
 
 
  
