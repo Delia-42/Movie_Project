@@ -64,7 +64,7 @@ def AC_Ratings():
         print(x)
 
 
-# The following are functions for users with ids to rate movies.
+# The following are functions for users with ids to rate movies and to delete their ratings.
 
 def New_Review():
     r_title = input ("Enter the movie name:")
@@ -79,11 +79,13 @@ def New_Review():
 def Delete_Movie_ID():
     mycursor.execute('delete from ratings order by movie_id desc limit 1;')
     db.commit()
-
+    mycursor.execute('delete from movies order by id desc limit 1;')
+    db.commit()
+    
 # This is where the program prompts the user to input selections.
 def startup():                                  
     while True:                               
-        print("Ahoy, there! To see a list of movies available, please select a genre to explore. \n Please input a number between 1-5. \n If you would like to see the top rated movies of each genre please input 6. \n If you would like to rate a movie, please input 7. \n If you would like to delete your recent rating, please input 8. \n Or input 9 if you wish to leave.")  
+        print("\n \n Ahoy, there! To see a list of movies in our collection, please select a genre by inputing a number between 1 and 5. \n \n If you would like to see the top rated movies of each genre please input 6. \n \n If you would like to rate a movie, please input 7. \n \n If you would like to delete your recent rating, please input 8. \n \n Or input 9 if you wish to leave.\n \n")  
         print("\t1. Drama")
         print("\t2. Horror")
         print("\t3. Comedy")
@@ -114,7 +116,7 @@ def startup():
         elif sel == 5:
             Q_Action()
         elif sel == 6:
-            x = input("To check out the top 3 rated movies in Horror, input the value A. \n To check out the top 3 rated movies in Drama, input B.\n  To check out the top 3 rated movies in Comedy, input C. \n To check out the top 3 rated movies in Adventure, input D. \n  To check out the top 3 rated Action movies, input E \n To return back to the main menu, input Q.")
+            x = input("\n To check out the top 3 rated movies in Horror, input the value A. \n \n To check out the top 3 rated movies in Drama, input B.\n \n To check out the top 3 rated movies in Comedy, input C. \n \n To check out the top 3 rated movies in Adventure, input D. \n \n To check out the top 3 rated Action movies, input E \n \n")
             if x == "A":          #This is the loop within a loop that also refers to defined functions up top.                  
                 H_Ratings()
             if x == "B":
@@ -125,15 +127,14 @@ def startup():
                 AC_Ratings()
             if x == "E":
                 AD_Ratings()
-            if x == "Q":
-                break      
+                 
 
         elif sel == 7:  # The following also refers to defined functions from earlier in the program.
             New_Review()
             movie_id = mycursor.lastrowid
             movie_id = int(movie_id)
-            r_reviewer_id = int(input("Please enter your user ID:"))
-            r_rating = input("Enter rating:")    
+            r_reviewer_id = int(input("Please enter your user ID:\n"))
+            r_rating = input("Enter rating:\n")    
             sql1 = "INSERT INTO ratings(movie_id, reviewer_id, rating) VALUES (%s, %s, %s)"
             val2 = (movie_id, r_reviewer_id, r_rating)       
             mycursor.execute(sql1, val2)
@@ -141,7 +142,7 @@ def startup():
         elif sel == 8:
             Delete_Movie_ID()
         elif sel == 9:
-            print("I hope you've enjoyed your exploration! Have a good day!") 
+            print("\nI hope you've enjoyed your exploration! Have a good day!\n") 
             break                               
         else:
             print("Sorry!  That input is not recognized")
