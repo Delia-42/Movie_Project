@@ -1,3 +1,4 @@
+import pandas as pd
 from colorama import Cursor
 import mysql.connector            #This is where I imported the connector class from MySql. 
 
@@ -39,29 +40,34 @@ def Q_Action():
 
 # The following are functions for select statements that are in a loop within a loop.
 def H_Ratings():
-    mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Horror" Group By title ORDER BY rating DESC LIMIT 3;')
+    mycursor.execute('SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Horror" Group By title ORDER BY AVG(rating) DESC LIMIT 4;')
     for x in mycursor:
-        print(*x)
+        x = pd.DataFrame(mycursor, columns=['Title', 'Genre', 'Rating']) 
+        print(x)
     
 def D_Ratings():
-    mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Drama" Group By title ORDER BY rating DESC LIMIT 3;')
+    mycursor.execute('SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Drama" Group By title ORDER BY AVG(rating) DESC LIMIT 4;')
     for x in mycursor:
-        print(*x)
+        x = pd.DataFrame(mycursor, columns=['Title', 'Genre', 'Rating']) 
+        print(x)
 
 def C_Ratings():
-    mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Comedy" Group By title ORDER BY rating DESC LIMIT 3;')
+    mycursor.execute('SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Comedy" Group By title ORDER BY AVG(rating) DESC LIMIT 4;')
     for x in mycursor:
-        print(*x)
+        x = pd.DataFrame(mycursor, columns=['Title', 'Genre', 'Rating']) 
+        print(x)
 
 def AD_Ratings():
-    mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Adventure" Group By title ORDER BY rating DESC LIMIT 3;')
+    mycursor.execute('SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Adventure" Group By title ORDER BY AVG(rating) DESC LIMIT 4;')
     for x in mycursor:
-        print(*x)
+        x = pd.DataFrame(mycursor, columns=['Title', 'Genre', 'Rating']) 
+        print(x)
 
 def AC_Ratings():
-    mycursor.execute('SELECT title, genre, MAX(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Action" Group By title ORDER BY rating DESC LIMIT 3;')
+    mycursor.execute('SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Action" Group By title ORDER BY AVG(rating) DESC LIMIT 4;')
     for x in mycursor:
-        print(*x)
+        x = pd.DataFrame(mycursor, columns=['Title', 'Genre', 'Rating']) 
+        print(x)
 
 
 # The following are functions for users with ids to rate movies and to delete their ratings.
