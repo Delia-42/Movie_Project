@@ -1,6 +1,6 @@
-import pandas as pd
+import pandas as pd               # This is where I imported pandas for a clearer table.
 from colorama import Cursor
-import mysql.connector            #This is where I imported the connector class from MySql. 
+import mysql.connector            # This is where I imported the connector class from MySql. 
 
 db = mysql.connector.connect(     # Here, I accessed the connect method through the connector class, and then passed the connection parameters.
     host="localhost",
@@ -80,6 +80,14 @@ def New_Review():
     mycursor.execute(sql, val)
     db.commit()
     print("Movie added.")
+
+def Update_Movie():
+    title_to_update = input("Please enter the new movie title: ")
+    title_update = input("Please insert movie id: ")
+    mycursor.execute("Update movies SET title=%s where id=%s", (title_to_update, title_update))
+    db.commit()
+    print("Movie Updated")
+        
     
 def Delete_Movie_ID():
     mycursor.execute('delete from ratings order by movie_id desc limit 1;')
@@ -91,7 +99,7 @@ def Delete_Movie_ID():
 # This is where the program prompts the user to input selections.
 def startup():                                  
     while True:                               
-        print("\n \n Ahoy, there! To see a list of movies in our collection, please select a genre by inputing a number between 1 and 5. \n \n If you would like to see the top rated movies of each genre please input 6. \n \n If you would like to rate a movie, please input 7. \n \n If you would like to delete your recent rating, please input 8. \n \n Or input 9 if you wish to leave.\n \n")  
+        print("\n \n Ahoy, there! To see a list of movies in our collection, please select a genre by inputing a number between 1 and 5. \n \n If you would like to see the top rated movies of each genre please input 6. \n \n If you would like to rate a movie, please input 7. \n \n If you would like to update a movie title, input 8. \n\n If you would like to delete your recent rating, please input 9. \n \n Or input 10 if you wish to leave.\n \n")  
         print("\t1. Drama")
         print("\t2. Horror")
         print("\t3. Comedy")
@@ -99,8 +107,9 @@ def startup():
         print("\t5. Action")
         print("\t6. Top_Rated")
         print("\t7. Create_a_Review")
-        print("\t8. Delete_Review")
-        print("\t9. Leave")
+        print("\t8. Update_Review")
+        print("\t9. Delete_Review")
+        print("\t10. Leave")
         
 
         while True:
@@ -147,8 +156,10 @@ def startup():
             db.commit()
             print("Rating added")
         elif sel == 8:
-            Delete_Movie_ID()
+            Update_Movie()
         elif sel == 9:
+            Delete_Movie_ID()
+        elif sel == 10:
             print("\nI hope you've enjoyed your rating experience! Have a good day!\n") 
             break                               
         else:
