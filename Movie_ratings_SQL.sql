@@ -272,7 +272,7 @@ LIMIT 3;
 # The following are miscellaneous checks on the database:
 
 # movies table select statements -
-
+SELECT title, genre, AVG(rating) FROM ratings INNER JOIN movies ON movies.id = ratings.movie_id Where genre = "Drama" Group By title ORDER BY AVG(rating) DESC LIMIT 4;
 select title, genre from movies where genre = "horror"; #This can be used to see if a movie has been inserted from python in a particular genre.
 
 select * from movies; # This is used to simply check on the movies inputs.

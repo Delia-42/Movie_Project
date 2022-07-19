@@ -81,6 +81,17 @@ def New_Review():
     db.commit()
     print("Movie added.")
 
+def New_Rating():
+            movie_id = mycursor.lastrowid
+            movie_id = int(movie_id)
+            r_reviewer_id = int(input("Please enter your user ID:\n"))
+            r_rating = input("Enter rating:\n")    
+            sql1 = "INSERT INTO ratings(movie_id, reviewer_id, rating) VALUES (%s, %s, %s)"
+            val2 = (movie_id, r_reviewer_id, r_rating)       
+            mycursor.execute(sql1, val2)
+            db.commit()
+            print("Rating added")  
+
 def Update_Movie():
     title_to_update = input("Please enter the new movie title: ")
     title_update = input("Please insert movie id: ")
@@ -146,15 +157,7 @@ def startup():
 
         elif sel == 7:  # The following also refers to defined functions from earlier in the program.
             New_Review()
-            movie_id = mycursor.lastrowid
-            movie_id = int(movie_id)
-            r_reviewer_id = int(input("Please enter your user ID:\n"))
-            r_rating = input("Enter rating:\n")    
-            sql1 = "INSERT INTO ratings(movie_id, reviewer_id, rating) VALUES (%s, %s, %s)"
-            val2 = (movie_id, r_reviewer_id, r_rating)       
-            mycursor.execute(sql1, val2)
-            db.commit()
-            print("Rating added")
+            New_Rating()
         elif sel == 8:
             Update_Movie()
         elif sel == 9:
